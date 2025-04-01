@@ -1,0 +1,11 @@
+vitrine d'une ecole de langues
+page d'acceuil minimaliste 
+test interactif pour prospection des visiteurs et utilisateur dans la langue souhaité
+ajouter des question au quiz de langues dans dashboard admin (optional)
+teacher section to assign home
+admin section to manage whole website ban/unban/add and remove classes.
+home work section assigned by classe
+user is identified by it's classe
+
+bnissba les devoirs t9dr dir 3 types demande task video ou écrit ou qcm 
+khassk dir lteacher creation de devoir page

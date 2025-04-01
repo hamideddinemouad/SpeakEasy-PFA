@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau de Bord Étudiant - SpeakEasy Academy</title>
+    <!-- Include Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {},
+        },
+      }
+    </script>
+    <style>
+      /* Style the burger icon */
+      .burger-line {
+        width: 25px;
+        height: 3px;
+        background-color: #F5F5F5;
+        margin-bottom: 4px;
+        display: block;
+      }
+    </style>
+</head>
+<body class="bg-[#F5F5F5] font-sans">
+
+    <!-- Header -->
+    <header class="bg-[#001F3F] text-[#F5F5F5] py-4">
+        <div class="container mx-auto flex items-center justify-between px-4">
+            <a href="/" class="text-xl font-semibold">SpeakEasy Academy</a>
+
+            <!-- Burger Icon (Mobile Only) -->
+            <button id="burgerBtn" class="burger-icon focus:outline-none md:hidden">
+              <span class="burger-line"></span>
+              <span class="burger-line"></span>
+              <span class="burger-line"></span>
+            </button>
+
+            <!-- Standard Nav (Desktop Only) -->
+            <nav class="hidden md:block">
+                <ul class="flex space-x-6">
+                    <li><a href="/" class="hover:text-[#FFD700]">Accueil</a></li>
+                    <li><a href="/about" class="hover:text-[#FFD700]">À propos</a></li>
+                    <li><a href="/courses" class="hover:text-[#FFD700]">Cours</a></li>
+                    <li><a href="/quiz" class="hover:text-[#FFD700]">Quiz</a></li>
+                    <li><a href="/login" class="hover:text-[#FFD700]">Connexion</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Collapsed Menu Items (Mobile Only) -->
+        <nav id="menu" class="hidden md:hidden px-4 py-2">
+            <ul class="space-y-2">
+                <li><a href="/" class="hover:text-[#FFD700]">Accueil</a></li>
+                <li><a href="/about" class="hover:text-[#FFD700]">À propos</a></li>
+                <li><a href="/courses" class="hover:text-[#FFD700]">Cours</a></li>
+                <li><a href="/quiz" class="hover:text-[#FFD700]">Quiz</a></li>
+                <li><a href="/login" class="hover:text-[#FFD700]">Connexion</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto py-16 px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+
+        <!-- Aside Navigation -->
+        <aside class="bg-white rounded-lg shadow-md p-6 md:col-span-1">
+            <h2 class="text-2xl font-semibold text-[#002D62] mb-4">Tableau de Bord Étudiant</h2>
+            <ul class="space-y-2">
+                <li><a href="#" data-target="courses" class="block px-4 py-2 rounded bg-[#F5F5F5] hover:bg-[#87CEEB] text-[#002D62] transition duration-300 nav-link">Mes Cours</a></li>
+                <li><a href="#" data-target="assignments" class="block px-4 py-2 rounded bg-[#F5F5F5] hover:bg-[#87CEEB] text-[#002D62] transition duration-300 nav-link">Mes Devoirs</a></li>
+                <li><a href="#" data-target="grades" class="block px-4 py-2 rounded bg-[#F5F5F5] hover:bg-[#87CEEB] text-[#002D62] transition duration-300 nav-link">Mes Notes</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content Area -->
+        <section class="bg-white rounded-lg shadow-md p-6 md:col-span-3">
+
+            <!-- My Courses Content -->
+            <div id="courses" class="content-section">
+                <h2 class="text-2xl font-semibold text-[#002D62] mb-4">Mes Cours</h2>
+                <p>Vos cours inscrits :</p>
+                <ul>
+                    <li class="py-2 border-b border-gray-200 last:border-b-0">
+                        <div class="flex justify-between items-center">
+                            <span>Français Débutant (A1)</span>
+                            <a href="/student/courses/french101" class="text-[#002D62] hover:text-blue-700">Voir le Cours</a>
+                        </div>
+                    </li>
+                    <li class="py-2 border-b border-gray-200 last:border-b-0">
+                        <div class="flex justify-between items-center">
+                            <span>Anglais Intermédiaire (B1)</span>
+                            <a href="/student/courses/english201" class="text-[#002D62] hover:text-blue-700">Voir le Cours</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- My Assignments Content -->
+            <div id="assignments" class="content-section hidden">
+                <h2 class="text-2xl font-semibold text-[#002D62] mb-4">Mes Devoirs</h2>
+                <p>Devoirs à compléter :</p>
+                <ul>
+                    <li class="py-2 border-b border-gray-200 last:border-b-0">
+                        <div class="flex justify-between items-center">
+                            <span>[Français A1] - Vocabulaire (Date Limite: 2025-01-15)</span>
+                            <a href="/student/assignments/vocab" class="text-[#002D62] hover:text-blue-700">Faire le Devoir</a>
+                        </div>
+                    </li>
+                    <li class="py-2 border-b border-gray-200 last:border-b-0">
+                        <div class="flex justify-between items-center">
+                            <span>[Anglais B1] - Lecture (Date Limite: 2025-01-20)</span>
+                            <a href="/student/assignments/reading" class="text-[#002D62] hover:text-blue-700">Faire le Devoir</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- My Grades Content -->
+            <div id="grades" class="content-section hidden">
+                <h2 class="text-2xl font-semibold text-[#002D62] mb-4">Mes Notes</h2>
+                <p>Vos dernières notes :</p>
+                <ul>
+                    <li class="py-2 border-b border-gray-200 last:border-b-0">
+                        <div class="flex justify-between items-center">
+                            <span>[Français A1] - Vocabulaire: 18/20</span>
+                            <span>[Date]</span>
+                        </div>
+                    </li>
+                    <li class="py-2 border-b border-gray-200 last:border-b-0">
+                        <div class="flex justify-between items-center">
+                            <span>[Anglais B1] - Lecture: 15/20</span>
+                            <span>[Date]</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#001F3F] text-[#F5F5F5] py-6 text-center">
+        
+        <p>&copy; 2025 SpeakEasy Academy</p>
+    </footer>
+
+    <script>
+        const burgerBtn = document.getElementById('burgerBtn');
+        const menu = document.getElementById('menu');
+
+        burgerBtn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // JavaScript to handle navigation
+        const navLinks = document.querySelectorAll('.nav-link');
+        const contentSections = document.querySelectorAll('.content-section');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', (event) => {
+                event.preventDefault(); // Prevent the default link behavior
+
+                const target = link.dataset.target;
+
+                // Hide all content sections
+                contentSections.forEach(section => {
+                    section.classList.add('hidden');
+                });
+
+                // Show the selected content section
+                document.getElementById(target).classList.remove('hidden');
+            });
+        });
+    </script>
+
+</body>
+</html>

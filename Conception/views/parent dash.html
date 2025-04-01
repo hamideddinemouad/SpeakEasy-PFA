@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau de Bord Parent - SpeakEasy Academy</title>
+    <!-- Include Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {},
+        },
+      }
+    </script>
+    <style>
+      /* Style the burger icon */
+      .burger-line {
+        width: 25px;
+        height: 3px;
+        background-color: #F5F5F5;
+        margin-bottom: 4px;
+        display: block;
+      }
+    </style>
+</head>
+<body class="bg-[#F5F5F5] font-sans">
+
+    <!-- Header -->
+    <header class="bg-[#001F3F] text-[#F5F5F5] py-4">
+        <div class="container mx-auto flex items-center justify-between px-4">
+            <a href="/" class="text-xl font-semibold">SpeakEasy Academy</a>
+
+            <!-- Burger Icon (Mobile Only) -->
+            <button id="burgerBtn" class="burger-icon focus:outline-none md:hidden">
+              <span class="burger-line"></span>
+              <span class="burger-line"></span>
+              <span class="burger-line"></span>
+            </button>
+
+            <!-- Standard Nav (Desktop Only) -->
+            <nav class="hidden md:block">
+                <ul class="flex space-x-6">
+                    <li><a href="/" class="hover:text-[#FFD700]">Accueil</a></li>
+                    <li><a href="/about" class="hover:text-[#FFD700]">À propos</a></li>
+                    <li><a href="/courses" class="hover:text-[#FFD700]">Cours</a></li>
+                    <li><a href="/quiz" class="hover:text-[#FFD700]">Quiz</a></li>
+                    <li><a href="/login" class="hover:text-[#FFD700]">Connexion</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Collapsed Menu Items (Mobile Only) -->
+        <nav id="menu" class="hidden md:hidden px-4 py-2">
+            <ul class="space-y-2">
+                <li><a href="/" class="hover:text-[#FFD700]">Accueil</a></li>
+                <li><a href="/about" class="hover:text-[#FFD700]">À propos</a></li>
+                <li><a href="/courses" class="hover:text-[#FFD700]">Cours</a></li>
+                <li><a href="/quiz" class="hover:text-[#FFD700]">Quiz</a></li>
+                <li><a href="/login" class="hover:text-[#FFD700]">Connexion</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto py-16 px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+
+        <!-- Aside Navigation -->
+        <aside class="bg-white rounded-lg shadow-md p-6 md:col-span-1">
+            <h2 class="text-2xl font-semibold text-[#002D62] mb-4">Tableau de Bord Parent</h2>
+            <ul class="space-y-2">
+                <li><a href="#" data-target="children" class="block px-4 py-2 rounded bg-[#F5F5F5] hover:bg-[#87CEEB] text-[#002D62] transition duration-300 nav-link">Mes Enfants</a></li>
+                <li><a href="#" data-target="complaints" class="block px-4 py-2 rounded bg-[#F5F5F5] hover:bg-[#87CEEB] text-[#002D62] transition duration-300 nav-link">Réclamations</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content Area -->
+        <section class="bg-white rounded-lg shadow-md p-6 md:col-span-3">
+
+            <!-- My Children Content -->
+            <div id="children" class="content-section">
+                <h2 class="text-2xl font-semibold text-[#002D62] mb-4">Mes Enfants</h2>
+                <p>Performances scolaires de vos enfants :</p>
+                <ul>
+                    <li class="py-2 border-b border-gray-200 last:border-b-0">
+                        <div class="flex justify-between items-center">
+                            <span>Yasmine Benani (Français A1)</span>
+                            <a href="/parent/children/yasmine" class="text-[#002D62] hover:text-blue-700">Voir les Performances</a>
+                        </div>
+                    </li>
+                    <li class="py-2 border-b border-gray-200 last:border-b-0">
+                        <div class="flex justify-between items-center">
+                            <span>Amine Benani (Anglais B1)</span>
+                            <a href="/parent/children/amine" class="text-[#002D62] hover:text-blue-700">Voir les Performances</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Complaints Content -->
+            <div id="complaints" class="content-section hidden">
+                <h2 class="text-2xl font-semibold text-[#002D62] mb-4">Réclamations</h2>
+                <p>Envoyer une réclamation à l'administration :</p>
+                <form action="/parent/complaints" method="post">
+                    <div class="mb-4">
+                        <label for="complaintText" class="block text-gray-700 opacity-75 text-sm font-bold mb-2">Votre Réclamation</label>
+                        <textarea id="complaintText" name="complaintText" rows="4" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Décrivez votre réclamation"></textarea>
+                    </div>
+                    <button type="submit" class="bg-[#E63946] hover:bg-red-700 text-[#F5F5F5] font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Envoyer la Réclamation</button>
+                </form>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#001F3F] text-[#F5F5F5] py-6 text-center">
+        
+        <p>&copy; 2025 SpeakEasy Academy</p>
+    </footer>
+
+    <script>
+        const burgerBtn = document.getElementById('burgerBtn');
+        const menu = document.getElementById('menu');
+
+        burgerBtn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // JavaScript to handle navigation
+        const navLinks = document.querySelectorAll('.nav-link');
+        const contentSections = document.querySelectorAll('.content-section');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', (event) => {
+                event.preventDefault(); // Prevent the default link behavior
+
+                const target = link.dataset.target;
+
+                // Hide all content sections
+                contentSections.forEach(section => {
+                    section.classList.add('hidden');
+                });
+
+                // Show the selected content section
+                document.getElementById(target).classList.remove('hidden');
+            });
+        });
+    </script>
+
+</body>
+</html>
