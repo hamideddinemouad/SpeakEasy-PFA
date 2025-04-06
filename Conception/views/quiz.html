@@ -1,0 +1,86 @@
+Okay, let's create a single-question quiz page where the next question loads dynamically based on the user's answer. To keep it static, I will not be able to actually make the next questions appear, instead I'll present a mockup of how this might work to send to the figma plugin. I'll include a timer and submit button. Since this is static, the timer will just be a placeholder as well, and the submit button will link to a mockup results page.
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - SpeakEasy Academy</title>
+    <!-- Include Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {},
+        },
+      }
+    </script>
+</head>
+<body class="bg-[#F5F5F5] font-sans">
+
+    <!-- Header (Consistent with other pages) -->
+    <header class="bg-[#001F3F] text-[#F5F5F5] py-4">
+        <div class="container mx-auto flex items-center justify-between px-4">
+            <a href="/" class="text-xl font-semibold">SpeakEasy Academy</a>
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="/" class="hover:text-[#FFD700]">Accueil</a></li>
+                    <li><a href="/about" class="hover:text-[#FFD700]">À propos</a></li>
+                    <li><a href="/courses" class="hover:text-[#FFD700]">Cours</a></li>
+                    <li><a href="/quiz" class="hover:text-[#FFD700]">Quiz</a></li>
+                    <li><a href="#" class="hover:text-[#FFD700]">Connexion</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto py-16 px-4">
+        <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-8">
+            <h1 class="text-3xl font-bold text-[#002D62] mb-6">Testez Votre Niveau de Français</h1>
+
+            <!-- Timer -->
+            <div class="text-gray-600 mb-4">Temps Restant: <span id="timer">00:59</span></div>
+
+            <!-- Question -->
+            <div id="questionContainer">
+                <p class="text-lg font-semibold text-[#002D62] mb-4">Choisissez la phrase correcte :</p>
+                <div class="space-y-2">
+                    <label class="flex items-center">
+                        <input type="radio" name="answer" value="a" class="mr-2">
+                        <span>A) Je suis mangeant une pomme.</span>
+                    </label>
+                    <label class="flex items-center">
+                        <input type="radio" name="answer" value="b" class="mr-2">
+                        <span>B) Je mange une pomme.</span>
+                    </label>
+                    <label class="flex items-center">
+                        <input type="radio" name="answer" value="c" class="mr-2">
+                        <span>C) Je vais manger une pomme.</span>
+                    </label>
+                    <label class="flex items-center">
+                        <input type="radio" name="answer" value="d" class="mr-2">
+                        <span>D) Je ai mange une pomme.</span>
+                    </label>
+                </div>
+
+                <div class="mt-6 text-center">
+                    <a href="/quiz/results" class="bg-[#E63946] hover:bg-red-700 text-[#F5F5F5] py-3 px-6 rounded-full text-xl transition duration-300">
+                        Soumettre
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer (Consistent with other pages, updated for 2025) -->
+    <footer class="bg-[#001F3F] text-[#F5F5F5] py-6 text-center">
+        
+        <p>© 2025 SpeakEasy Academy</p>
+    </footer>
+
+</body>
+</html>
+
+
