@@ -20,6 +20,7 @@ class CheckLogin
         if (Auth::check()){
             return $next($request);
         }
-        return redirect('Login')->withErrors("Enregistrez ou Connectez-vous pour accéder a l'interface demandé");
+        $page = $request->server('PATH_INFO');
+        return redirect('Login')->withErrors("Enregistrez ou Connectez-vous pour accéder a la page $page");
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\QuizController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -28,3 +29,5 @@ Route::post('Login', [AuthController::class, 'login']);
 Route::get('quiz', function(){
     return view('quiz');
 })->Middleware('CheckLogin');
+
+Route::post('quiz', [QuizController::class, 'start'])->Middleware('CheckLogin');
