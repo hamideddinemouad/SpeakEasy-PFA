@@ -30,4 +30,7 @@ Route::get('quiz', function(){
     return view('quiz');
 })->Middleware('CheckLogin');
 
-Route::post('quiz', [QuizController::class, 'start'])->Middleware('CheckLogin');
+
+Route::post('quizpage', [QuizController::class, 'start'])->Middleware('CheckLogin');
+
+Route::post('quizpage/inprogress', [QuizController::class, 'continue'])->Middleware('CheckLogin');
