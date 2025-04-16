@@ -31,6 +31,18 @@ Route::get('quiz', function(){
 })->Middleware('CheckLogin');
 
 
-Route::post('quizpage', [QuizController::class, 'start'])->Middleware('CheckLogin');
+Route::post('/quizpage/init', [QuizController::class, 'start'])->name('quiz.init');
 
-Route::post('quizpage/inprogress', [QuizController::class, 'continue'])->Middleware('CheckLogin');
+
+
+Route::post('/quizpage/reply', [QuizController::class, 'continue'])->name('answer.reply');
+
+
+// Route::match(['get', 'post'], '/quizpage', [QuizController::class, 'start']);
+// Route::get('quizpage', function(){
+//     return view('quizpage');
+// })->Middleware('CheckLogin');
+
+
+
+// Route::post('quizpage/inprogress', [QuizController::class, 'continue'])->Middleware('CheckLogin');

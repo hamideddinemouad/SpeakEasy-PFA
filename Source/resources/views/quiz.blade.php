@@ -17,7 +17,7 @@
             </p>
 
             <!-- Level Selection Form -->
-            <form action="/quizpage" method="POST">
+            <form action="{{route('quiz.init')}}" method="POST">
                 @csrf
                 <div class="mb-6 text-left">
                     <label class="block mb-2 font-semibold">Langue :</label>
