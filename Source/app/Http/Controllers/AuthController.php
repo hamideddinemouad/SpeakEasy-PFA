@@ -20,11 +20,17 @@ class AuthController extends Controller
         $newUser->password = Hash::make($request->password);
         $newUser->save();
     }
+
     public function login(LoginRequest $request){
         $login = Auth::attempt(['email' => $request->email, 'password' => $request->password]);
         if($login){
             return view('welcome');
         }
         return redirect('Login')->withErrors("Incorrect Password");
+    }
+
+    public function logout(){
+        Auth::logout();
+        return view("welcome");
     }
 }

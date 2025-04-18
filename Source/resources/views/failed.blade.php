@@ -6,7 +6,7 @@
     <x-Header />
 
     <!-- Main Content -->
-    @if($level == "C2" || $endquiz == 1)
+    @if($level == "C2" || (isset($endquiz)&& $endquiz == 1))
     <main class="container mx-auto py-16 px-4">
         <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-8 text-center">
             <h1 class="text-3xl font-bold text-green-500 mb-6">Félicitations !</h1>

@@ -28,9 +28,10 @@
                 @php
                 $dashboard = (Auth::user()->role . "dashboard");
                 @endphp
+                    <li><a href="/logout" class="hover:text-[#FFD700]">Déconnexion </a></li>
                     <li><a href={{$dashboard}} class="hover:text-[#FFD700]">Dashboard</a></li>
                 @else
-                    <li><a href="/login" class="hover:text-[#FFD700]">Connexion</a></li>
+                    <li><a href="/Login" class="hover:text-[#FFD700]">Connexion</a></li>
                 @endif
             </ul>
         </nav>
@@ -44,7 +45,7 @@
             <li><a href="/about" class="hover:text-[#FFD700]">À propos</a></li>
             <li><a href="/courses" class="hover:text-[#FFD700]">Cours</a></li>
             <li><a href="/quiz" class="hover:text-[#FFD700]">Quiz</a></li>
-            <li><a href="/login" class="hover:text-[#FFD700]">Connexion</a></li>
+            <li><a href="/Login" class="hover:text-[#FFD700]">Connexion</a></li>
         </ul>
     </nav>
 </header>

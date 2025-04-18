@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\QuizController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -43,10 +44,15 @@ Route::get('studentdashboard', function(){
     return view('studentdashboard');
 })->Middleware('CheckLogin')->Middleware('CheckRole:student');
 
+Route::get('admindashboard', [DashboardController::class, 'admin'])->Middleware('CheckLogin')->Middleware('CheckRole:admin');
+
 Route::get('/unauthorized', function(){
     return view('unauthorized');
 })->name('unauthorized');
 
+Route::get('/logout', [AuthController::class, 'logout']);
+
+Route::get('/teacherdashboard', [DashboardController::class, 'teacher'])->Middleware('CheckLogin')->Middleware('CheckRole:teacher');
 // Route::match(['get', 'post'], '/quizpage', [QuizController::class, 'start']);"
 // Route::get('quizpage', function(){
 //     return view('quizpage');

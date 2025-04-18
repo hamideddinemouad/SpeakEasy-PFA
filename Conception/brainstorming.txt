@@ -9,3 +9,12 @@ user is identified by it's classe
 
 bnissba les devoirs t9dr dir 3 types demande task video ou écrit ou qcm 
 khassk dir lteacher creation de devoir page
+
+student is assigned by admin to one or more classes;
+task are assigned to students via a professeur;
+a task teacher can choose link or texte or qcm then student contains also description and title unique;
+a student can then make a response via texte or do the qcm or send link;
+the assignement will be corrected by the professor who assigned it if it's not a qcm;
+student can see corrections of past examms in mes notes section;
+
+admin can see all uses
