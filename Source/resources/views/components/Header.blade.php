@@ -25,7 +25,10 @@
                 <li><a href="/courses" class="hover:text-[#FFD700]">Cours</a></li>
                 <li><a href="/quiz" class="hover:text-[#FFD700]">Quiz</a></li>
                 @if(Auth::check())
-                    <li><a href="/dashboard" class="hover:text-[#FFD700]">Dashboard</a></li>
+                @php
+                $dashboard = (Auth::user()->role . "dashboard");
+                @endphp
+                    <li><a href={{$dashboard}} class="hover:text-[#FFD700]">Dashboard</a></li>
                 @else
                     <li><a href="/login" class="hover:text-[#FFD700]">Connexion</a></li>
                 @endif

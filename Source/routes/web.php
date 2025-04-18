@@ -31,14 +31,23 @@ Route::get('quiz', function(){
 })->Middleware('CheckLogin');
 
 
-Route::post('/quizpage/init', [QuizController::class, 'start'])->name('quiz.init');
+Route::post('/quizpage/init', [QuizController::class, 'start'])->name('quiz.init')->Middleware('CheckLogin');
 
+Route::post('/quizpage/reply', [QuizController::class, 'continue'])->name('answer.reply')->Middleware('CheckLogin');
 
+Route::get('/quizpage/failed', [QuizController::class, 'decreaseLevel'])->Middleware('CheckLogin');
 
-Route::post('/quizpage/reply', [QuizController::class, 'continue'])->name('answer.reply');
+Route::get('/quizpage/nextlevel', [QuizController::class, 'increaseLevel'])->Middleware('CheckLogin');
 
+Route::get('studentdashboard', function(){
+    return view('studentdashboard');
+})->Middleware('CheckLogin')->Middleware('CheckRole:student');
 
-// Route::match(['get', 'post'], '/quizpage', [QuizController::class, 'start']);
+Route::get('/unauthorized', function(){
+    return view('unauthorized');
+})->name('unauthorized');
+
+// Route::match(['get', 'post'], '/quizpage', [QuizController::class, 'start']);"
 // Route::get('quizpage', function(){
 //     return view('quizpage');
 // })->Middleware('CheckLogin');
