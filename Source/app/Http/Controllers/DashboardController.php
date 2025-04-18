@@ -18,6 +18,7 @@ class DashboardController extends Controller
         // dd ($users);
     }
     public function teacher(){
+        // $users = User
         return view('teacherdashboard');
 }
 }
