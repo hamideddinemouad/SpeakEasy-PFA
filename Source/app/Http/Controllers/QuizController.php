@@ -69,11 +69,11 @@ class QuizController extends Controller
     }
 
     public function handleLevel(){
-        if ($this->errorsSoFar >= 1){
+        if ($this->errorsSoFar >= 6){
             $this->errorsSoFar = 0;
             return view("failed")->with("level", $this->level);
         }
-        if ($this->score == 2){
+        if ($this->score === 13){
             $this->errorsSoFar = 0;
             return view("next")->with("level", $this->level)->with("endquiz", 0);
         }
@@ -131,6 +131,7 @@ class QuizController extends Controller
     public function loadQuestions(){
         // dd($this);
         // dd(Question::where('Level', $this->level)->where('language', ($this->language))->with('answers')->take('20')->get());
+        // salam mohamed kidayr cava
         $this->questions = Question::where('Level', $this->level)->where('language', ($this->language))->with('answers')->take('20')->get();
         // dd($this->questions);
     }

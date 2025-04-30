@@ -56,10 +56,12 @@
             </div>
 
             
-            <!-- Manage Assignments Content -->
+            <!-- Manage Assignments Coadentent -->
             <div id="assignments" class="content-section hidden">
+                <x-teacherForms.creerDevoir />
                 <h2 class="text-2xl font-semibold text-[#002D62] mb-4">Gérer les Devoirs</h2>
                 <ul>
+                    <button id="modalTrigger" data-modal-id="CreateAssignementModal"> creer devoir </button>
                     <li class="py-2 border-b border-gray-200 last:border-b-0">
                         <div class="flex justify-between items-center">
                             <span>[Français A1] - Vocabulaire (7/15 complétés)</span>
@@ -126,6 +128,21 @@
 
         })
     })
+
+    let modalTriggers = document.querySelectorAll("#modalTrigger");
+    modalTriggers.forEach(modal => 
+        modal.addEventListener("click", () =>{
+            // console.log(modal);
+            document.querySelector("#" + modal.dataset.modalId).classList.remove("hidden");
+        })
+    )
+    let closeModalTriggers = document.querySelectorAll('#closeModalTrigger');
+    closeModalTriggers.forEach(modal => 
+        modal.addEventListener("click", () =>{
+            // console.log(modal);
+            document.querySelector("#" + modal.dataset.modalId).classList.add("hidden");
+        })
+    )
     </script>
 
 @endsection

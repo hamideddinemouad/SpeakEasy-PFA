@@ -10,20 +10,23 @@
 
     <!-- Aside Navigation -->
     <aside class="bg-white rounded-lg shadow-md p-6 md:col-span-1">
-        <h2 class="text-2xl font-semibold text-[#002D62] mb-6">Tableau de Bord Administrateur</h2>
+        <h2 class="text-2xl font-semibold text-[#002D62] mb-6">Tableau de Bord Enseignant</h2>
         <ul class="space-y-4">
             <li data-tab-id="users" class="block px-4 py-3 rounded-lg bg-[#F5F5F5] hover:bg-[#87CEEB] text-[#002D62] transition duration-300 nav-link cursor-pointer">
-                Gérer les Utilisateurs
+                Mes  devoirs assignés
             </li>
             <li data-tab-id="courses" class="block px-4 py-3 rounded-lg bg-[#F5F5F5] hover:bg-[#87CEEB] text-[#002D62] transition duration-300 nav-link cursor-pointer">
-                Gérer les classes
+                Mes cours
+            </li>
+            <li data-tab-id="courses" class="block px-4 py-3 rounded-lg bg-[#F5F5F5] hover:bg-[#87CEEB] text-[#002D62] transition duration-300 nav-link cursor-pointer">
+                Mes devoirs
             </li>
         </ul>
     </aside>
 
     <!-- Main Content Area -->
     <section class="bg-white rounded-lg shadow-md p-6 md:col-span-3 space-y-8">
-        <x-Errors />
+        <x-Errors/>
 
         <!-- Manage Users Content -->
         <div id="users" class="content-section">
@@ -69,7 +72,7 @@
         </div>
 
         <!-- Manage Courses Content -->
-        <div id="courses" class="content-section hidden">
+        {{-- <div id="courses" class="content-section hidden">
             <h2 class="text-2xl font-semibold text-[#002D62] mb-4 flex justify-between items-center">
                 Gérer les classes
                 <x-newcourse :professors="$professors" />
@@ -81,23 +84,22 @@
             <ul class="space-y-4">
                 @foreach ($courses as $course)  
                 <li class="py-4 border-b border-gray-200 last:border-b-0">
-                    <div class="flex justify-between items-center gap-2">
-                        <span class="font-semibold flex-1">{{ $course->title }}</span>
-                        <button id="modalTriggerCourse" data-course-id="{{$course->id}}" class="cursor-pointer text-blue-600 hover:text-blue-800 font-medium transition duration-200 px-3 py-1 rounded-md border border-blue-100 bg-blue-50 whitespace-nowrap">Ajouter des étudiants</button>
-                        <button id="modalTriggerkickStudents" data-course-id="{{$course->id}}" class="cursor-pointer text-blue-600 hover:text-blue-800 font-medium transition duration-200 px-3 py-1 rounded-md border border-blue-100 bg-red-50 whitespace-nowrap">Eliminer des étudiants</button>
+                    <div class="flex justify-between items-center">
+                        <span class="font-semibold">{{ $course->title }}</span>
+                        <button class="hidden" {{ $course->id }}" id="modalTriggerCourse" class="cursor-pointer text-blue-600 hover:text-blue-800 font-medium transition duration-200 px-3 py-1 rounded-md border border-blue-100 bg-blue-50">Gérer</button>
                         <form action="/delete/course/{{ $course->id }}" method="POST" onsubmit="return confirm('vous etes sur que voulez supprimer {{$course->title}}?');">
                             @csrf
-                            <button type="submit" class="bg-red-100 text-red-600 hover:bg-red-200 hover:text-red-800 font-medium px-3 py-1 rounded-md border border-red-200 transition duration-200 whitespace-nowrap">
+                            <button type="submit"
+                                    class="bg-red-100 text-red-600 hover:bg-red-200 hover:text-red-800 font-medium px-3 py-1 rounded-md border border-red-200 transition duration-200">
                                 Delete
                             </button>
                         </form>
                     </div>
                 </li>
-                <x-gererclasse :course="$course" :user="$user" :allStudents="$allStudents" />
-                <x-elimineretudiants :course="$course" :user="$user" :allStudents="$allStudents" />
+                <x-gererclasse :course="$course" :user="$user"/>
                 @endforeach
             </ul>
-        </div>
+        </div> --}}
     </section>
 </main>
 
@@ -125,76 +127,8 @@ function showSection(elements, noHidden) {
             showSection(contentSections, document.querySelector('#' + dataTab.dataset.tabId));
         })
     })
-    // NEW COURSE MODAL 
-    let newcourse = document.querySelector("#newcoursebutton");
-    let closeModal = document.querySelector("#closeModal");
-    // console.log(closeModal);
-    let modal = document.querySelector("#myModal");
 
-    [newcourse, closeModal].forEach(element => {
-        element.addEventListener("click", () => {
-                modal.classList.toggle("hidden");
-        })
-    });
-    // handleUserModal = 
-    handleModals = document.querySelectorAll("#modalTrigger");
-    handleModals.forEach(modal => {
-        modal.addEventListener("click", ()=>{
-            // console.log("clicked" + " " + modal.dataset.modalType + " " + "user id = " + " " + modal.dataset.userId);
-            document.querySelector("#handleUser" + modal.dataset.userId).classList.toggle("hidden");
-            document.querySelector("#closeModalUser" + modal.dataset.userId).addEventListener("click", () => {
-                document.querySelector("#handleUser" + modal.dataset.userId).classList.add("hidden");
-            })
-        })
-    })
-
-    handleModals = document.querySelectorAll("#modalTrigger");
-    handleModals.forEach(modal => {
-        modal.addEventListener("click", ()=>{
-            // console.log("clicked" + " " + modal.dataset.modalType + " " + "user id = " + " " + modal.dataset.userId);
-            document.querySelector("#handleUser" + modal.dataset.userId).classList.toggle("hidden");
-            document.querySelector("#closeModalUser" + modal.dataset.userId).addEventListener("click", () => {
-                document.querySelector("#handleUser" + modal.dataset.userId).classList.add("hidden");
-            })
-        })
-    })
-
-    handleModals = document.querySelectorAll("#modalTrigger");
-    handleModals.forEach(modal => {
-        modal.addEventListener("click", ()=>{
-            // console.log("clicked" + " " + modal.dataset.modalType + " " + "user id = " + " " + modal.dataset.userId);
-            document.querySelector("#handleUser" + modal.dataset.userId).classList.toggle("hidden");
-            document.querySelector("#closeModalUser" + modal.dataset.userId).addEventListener("click", () => {
-                document.querySelector("#handleUser" + modal.dataset.userId).classList.add("hidden");
-            })
-        })
-    })
-    
-    let handleCourseModals = document.querySelectorAll("#modalTriggerCourse");
-    // console.log(handleCourseModals);
-    handleCourseModals.forEach(modal => {
-        modal.addEventListener("click", ()=>{
-            console.log(document.querySelector("#handleCourse" + modal.dataset.courseId));
-            // console.log("clicked" + " " + modal.dataset.modalType + " " + "user id = " + " " + modal.dataset.userId);
-            document.querySelector("#handleCourse" + modal.dataset.courseId).classList.toggle("hidden");
-            document.querySelector("#closeModalCourse" + modal.dataset.courseId).addEventListener("click", () => {
-                document.querySelector("#handleCourse" + modal.dataset.courseId).classList.add("hidden");
-            })
-        })
-    })
-
-    let handleCourseModalKick = document.querySelectorAll("#modalTriggerkickStudents");
-    // console.log(handleCourseModals);
-    handleCourseModalKick.forEach(modal => {
-        modal.addEventListener("click", ()=>{
-            console.log(document.querySelector("kickStudents" + modal.dataset.courseId));
-            // console.log("clicked" + " " + modal.dataset.modalType + " " + "user id = " + " " + modal.dataset.userId);
-            document.querySelector("#kickStudents" + modal.dataset.courseId).classList.toggle("hidden");
-            document.querySelector("#closeModalkickStudents" + modal.dataset.courseId).addEventListener("click", () => {
-                document.querySelector("#kickStudents" + modal.dataset.courseId).classList.add("hidden");
-            })
-        })
-    })
+    //all modals triggers need event listeners 
 </script>
 
 @endsection
