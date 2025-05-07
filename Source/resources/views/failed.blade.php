@@ -5,15 +5,12 @@
 @section('content')
     <x-Header />
 
-    <!-- Main Content -->
+
     @if($level == "C2" || (isset($endquiz)&& $endquiz == 1 || $level == "A1"))
     <main class="container mx-auto py-16 px-4">
         <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-8 text-center">
             <h1 class="text-3xl font-bold text-green-500 mb-6">dommage !</h1>
 
-            <!-- <p class="text-lg text-gray-700 opacity-75 mb-4">
-                votre niveau est  <span class="inline-block bg-red-100 text-red-700 font-semibold px-3 py-1 rounded-full shadow-sm">{{$level}}</span> avec succès !
-            </p> -->
 
             <p class="text-lg text-gray-700 opacity-75 mb-8">
                Votre niveau en Anglais est effectivement  <span class="inline-block bg-red-100 text-red-700 font-semibold px-3 py-1 rounded-full shadow-sm">{{$level}}</span>

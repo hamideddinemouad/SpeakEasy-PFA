@@ -8,7 +8,7 @@
 
 <main class="container mx-auto py-16 px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
 
-    <!-- Aside Navigation -->
+
     <aside class="bg-white rounded-lg shadow-md p-6 md:col-span-1">
         <h2 class="text-2xl font-semibold text-[#002D62] mb-6">Tableau de Bord Administrateur</h2>
         <ul class="space-y-4">
@@ -21,11 +21,10 @@
         </ul>
     </aside>
 
-    <!-- Main Content Area -->
     <section class="bg-white rounded-lg shadow-md p-6 md:col-span-3 space-y-8">
         <x-Errors />
         <x-Success/>
-        <!-- Manage Users Content -->
+
         <div id="users" class="content-section">
             <h2 class="text-2xl font-semibold text-[#002D62] mb-4">Gérer les Utilisateurs</h2>
             <ul class="space-y-4">
@@ -45,7 +44,7 @@
               
                         </div>
                         
-                        <!-- Grouped role and button -->
+                   
                         <div class="flex items-center gap-4">
                             <span class="inline-block bg-blue-100 text-[#002D62] text-sm font-medium px-3 py-1 rounded-full">
                                 Role: {{ $user->role }}
@@ -68,7 +67,7 @@
             </ul>
         </div>
 
-        <!-- Manage Courses Content -->
+    
         <div id="courses" class="content-section hidden">
             <h2 class="text-2xl font-semibold text-[#002D62] mb-4 flex justify-between items-center">
                 Gérer les classes

@@ -4,7 +4,7 @@
 
 <x-Header />
 
-    <!-- Main Content -->
+
     <main class="container mx-auto py-16 px-4">
         <div class="max-w-md mx-auto bg-white rounded-lg shadow-md p-8">
             <h1 class="text-3xl font-bold text-[#002D62] mb-6">Connexion</h1>
