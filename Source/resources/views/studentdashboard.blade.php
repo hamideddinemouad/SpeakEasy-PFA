@@ -6,10 +6,9 @@
 
 <x-Header />
 
-    <!-- Main Content -->
     <main class="container mx-auto py-16 px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
 
-        <!-- Aside Navigation -->
+
         <aside class="bg-white rounded-lg shadow-md p-6 md:col-span-1">
             <h2 class="text-2xl font-semibold text-[#002D62] mb-4">Tableau de Bord Étudiant</h2>
             <ul class="space-y-2">
@@ -19,10 +18,9 @@
             </ul>
         </aside>
 
-        <!-- Main Content Area -->
+
         <section class="bg-white rounded-lg shadow-md p-6 md:col-span-3">
 
-            <!-- My Courses Content -->
             <div id="courses" class="content-section hidden">
                 <h2 class="text-2xl font-semibold text-[#002D62] mb-4">Mes Cours</h2>
                 <p class="text-gray-700 italic mb-2">Vos cours inscrits :</p>
@@ -39,7 +37,7 @@
                 </ul>
             </div>
 
-            <!-- My Assignments Content -->
+         
             <div id="assignments" class="content-section hidden">
                 <h2 class="text-2xl font-semibold text-[#002D62] mb-4">Mes Devoirs</h2>
                 <p class="text-gray-700 italic mb-2">Vos cours inscrits :</p>
