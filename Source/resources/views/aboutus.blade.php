@@ -19,7 +19,7 @@
 
      <x-Header />
 
-    <!-- Main Content -->
+
     <main class="container mx-auto py-16 px-4">
         <h1 class="text-4xl font-bold text-[#002D62] mb-8">À Propos de SpeakEasy Academy</h1>
 
