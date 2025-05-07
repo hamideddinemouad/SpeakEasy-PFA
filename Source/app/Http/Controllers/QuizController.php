@@ -34,7 +34,7 @@ class QuizController extends Controller
             $this->questionCount++;
             $this->saveProgress();
             $progress = $this->handleLevel();
-            if ($progress != "continue"){
+            if ($progress !== "continue"){
                 return $progress;
             }
             return view('quizpage')
@@ -53,7 +53,10 @@ class QuizController extends Controller
 
         $this->saveProgress();
         if ($progress != "continue"){
+            // dd("should return page next or prev");
+            // dd($progress);
             return $progress;
+          
         }
         return view('quizpage')
         ->with('question', $this->questions[$this->indexSoFar])
@@ -69,12 +72,17 @@ class QuizController extends Controller
     }
 
     public function handleLevel(){
-        if ($this->errorsSoFar >= 6){
+        // dd("handle triggered");
+        if ($this->errorsSoFar >= 3){
             $this->errorsSoFar = 0;
+            // dd("handle triggered and should lower");
             return view("failed")->with("level", $this->level);
+            
         }
-        if ($this->score === 13){
+        if ($this->score === 1){
             $this->errorsSoFar = 0;
+            // dd("handle triggered and should increase");
+        
             return view("next")->with("level", $this->level)->with("endquiz", 0);
         }
         return "continue";
@@ -108,7 +116,7 @@ class QuizController extends Controller
         $this->questions = session('questions');
         $this->indexSoFar = session('indexSoFar');
         $this->increaseLevel = session('increaseLevel');
-        $this->decreaseLevel = session('increaseLevel');
+        $this->decreaseLevel = session('decreaseLevel');
         $this->errorsSoFar = session('errorsSoFar');
         $this->score = session('score');
         $this->questionCount = session('questionCount');
@@ -294,7 +302,6 @@ class QuizController extends Controller
         $this->questionCount = 0;
         return $this->continueNewLevel();
     }
-
     // public function generateNextQuestion(){
     //     // dd($this->questions);
     //     return view('quizpage')->with('question', $this->questions[$this->indexSoFar]);

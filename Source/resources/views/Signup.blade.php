@@ -34,7 +34,7 @@
                     <button type="submit" class="bg-[#E63946] hover:bg-red-700 text-[#F5F5F5] font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                         S'inscrire
                     </button>
-                    <a class="inline-block align-baseline font-bold text-sm text-[#002D62] hover:text-blue-800" href="/login">
+                    <a class="inline-block align-baseline font-bold text-sm text-[#002D62] hover:text-blue-800" href="/Login">
                         Déjà un compte?
                     </a>
                 </div>

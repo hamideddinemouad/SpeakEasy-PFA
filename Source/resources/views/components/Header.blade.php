@@ -22,7 +22,7 @@
             <ul class="flex space-x-6">
                 <li><a href="/" class="hover:text-[#FFD700]">Accueil</a></li>
                 <li><a href="/about" class="hover:text-[#FFD700]">À propos</a></li>
-                <li><a href="/courses" class="hover:text-[#FFD700]">Cours</a></li>
+                <li><a href="/programs" class="hover:text-[#FFD700]">Cours</a></li>
                 <li><a href="/quiz" class="hover:text-[#FFD700]">Quiz</a></li>
                 @if(Auth::check())
                 @php
@@ -32,6 +32,7 @@
                     <li><a href={{$dashboard}} class="hover:text-[#FFD700]">Dashboard</a></li>
                 @else
                     <li><a href="/Login" class="hover:text-[#FFD700]">Connexion</a></li>
+                    <li><a href="/Signup" class="hover:text-[#FFD700]">S'enregistrer</a></li>
                 @endif
             </ul>
         </nav>

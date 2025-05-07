@@ -4,7 +4,9 @@
 
 @section('content')
 
-<x-Header />
+<x-Header/>
+
+
 <div id="myModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
     <!-- Modal content -->
     <div class="bg-white p-6 rounded-2xl shadow-2xl w-full max-w-md">
@@ -36,11 +38,27 @@
 
         <!-- Main Content Area -->
         <section class="bg-white rounded-lg shadow-md p-6 md:col-span-3">
+            <x-Success/>
             <!-- Manage Courses Content -->
+            <x-Errors />
             <div id="courses" class="content-section">
                 <h2 class="text-2xl font-semibold text-[#002D62] mb-4">Gérer mes Cours</h2>
-                <ul>
-                    <li class="py-2 border-b border-gray-200 last:border-b-0">
+                <ul class="bg-white max-w-xl mx-auto rounded-xl shadow-lg overflow-hidden divide-y divide-gray-200">
+                    @foreach($courses as $course)
+                        <li class="px-6 py-5 hover:bg-gray-50 transition duration-150 ease-in-out">
+                            <div class="flex justify-between items-center">
+                                <span class="text-xl font-medium text-gray-900 tracking-tight leading-snug">
+                                    {{ $course->title }}
+                                </span>
+                                {{-- <a href="/admin/courses/{{$course->id}}/edit" class="bg-[#87CEEB] hover:bg-[#002D62] text-[#F5F5F5] py-2 px-4 rounded transition duration-300 text-sm">Infos</a> --}}
+                            </div>
+                        </li>
+                    @endforeach
+                </ul>
+                    
+                
+                    
+                    <!-- <li class="py-2 border-b border-gray-200 last:border-b-0">
                         <div class="flex justify-between items-center">
                             <span>Français Débutant (A1)</span>
                             <a href="/teacher/courses/french101" class="text-[#002D62] hover:text-blue-700">Gérer</a>
@@ -51,48 +69,60 @@
                             <span>Anglais Intermédiaire (B1)</span>
                             <a href="/teacher/courses/english201" class="text-[#002D62] hover:text-blue-700">Gérer</a>
                         </div>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
 
-            
+        
             <!-- Manage Assignments Coadentent -->
             <div id="assignments" class="content-section hidden">
+                <button id="modalTrigger" data-modal-id="CreateAssignmentModal" type="button" class="mt-4 mx-auto block bg-[#87CEEB] hover:bg-[#002D62] text-[#F5F5F5] py-2 px-4 rounded transition duration-300 cursor-pointer bg-blue-600">
+                    Creer un devoir
+                </button>
                 <x-teacherForms.creerDevoir />
                 <h2 class="text-2xl font-semibold text-[#002D62] mb-4">Gérer les Devoirs</h2>
-                <ul>
-                    <button id="modalTrigger" data-modal-id="CreateAssignementModal"> creer devoir </button>
-                    <li class="py-2 border-b border-gray-200 last:border-b-0">
-                        <div class="flex justify-between items-center">
-                            <span>[Français A1] - Vocabulaire (7/15 complétés)</span>
-                            <a href="/teacher/assignments/vocab" class="text-[#002D62] hover:text-blue-700">Voir/Noter</a>
-                        </div>
-                    </li>
-                    <li class="py-2 border-b border-gray-200 last:border-b-0">
-                        <div class="flex justify-between items-center">
-                            <span>[Anglais B1] - Lecture (10/15 complétés)</span>
-                            <a href="/teacher/assignments/reading" class="text-[#002D62] hover:text-blue-700">Voir/Noter</a>
-                        </div>
-                    </li>
+                <ul class="bg-white max-w-xl mx-auto rounded-xl shadow-lg overflow-hidden divide-y divide-gray-200">
+
+                   
+                    @foreach($assignments as $assignment)
+                    {{-- {{dd()}} --}}
+                        <li class="px-6 py-5 hover:bg-gray-50 transition duration-150 ease-in-out">
+                            <div class="flex justify-between items-center">
+                                <span class="text-xl font-medium text-gray-900 tracking-tight leading-snug">
+                                    {{ $assignment->title }}
+                                </span>
+                                <div class="flex gap-2"> <!-- Added container with gap -->
+                                    <button id="modalTrigger" 
+                                            data-modal-id="{{$assignment->title}}"
+                                            class="bg-blue-600 hover:bg-[#002D62] text-[#F5F5F5] py-2 px-4 rounded transition duration-300 text-sm">
+                                        Assigner 
+                                    </button>
+                                    <a href="/delete/assignment/{{$assignment->id}}" 
+                                       class="bg-red-600 hover:bg-[#002D62] text-[#F5F5F5] py-2 px-4 rounded transition duration-300 text-sm">
+                                        Supprimer
+                                    </a>
+                                </div>
+                            </div>
+                            <x-teacherForms.assign :assignment="$assignment" :studentsObjects="$studentsObjects"/>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
 
             <!-- Manage Students Content -->
             <div id="students" class="content-section hidden">
                 <h2 class="text-2xl font-semibold text-[#002D62] mb-4">Voir mes Étudiants</h2>
-                <ul>
-                    <li class="py-2 border-b border-gray-200 last:border-b-0">
-                        <div class="flex justify-between items-center">
-                            <span>Fatima Zahra El Mansouri (Français A1)</span>
-                            <a href="/teacher/students/fatima" class="text-[#002D62] hover:text-blue-700">Gérer</a>
-                        </div>
-                    </li>
-                    <li class="py-2 border-b border-gray-200 last:border-b-0">
-                        <div class="flex justify-between items-center">
-                            <span>Youssef Kadmiri (Anglais B1)</span>
-                            <a href="/teacher/students/youssef" class="text-[#002D62] hover:text-blue-700">Gérer</a>
-                        </div>
-                    </li>
+                <ul class="bg-white max-w-xl mx-auto rounded-xl shadow-lg overflow-hidden divide-y divide-gray-200">
+                    @foreach($students as $student)
+                        <li class="px-6 py-5 hover:bg-gray-50 transition duration-150 ease-in-out">
+                            <div class="flex justify-between items-center">
+                                <span class="text-xl font-medium text-gray-900 tracking-tight leading-snug">
+                                    {{$student}}
+                                </span>
+                                {{-- <a href="/admin/courses/{{}}/edit" class="bg-[#87CEEB] hover:bg-[#002D62] text-[#F5F5F5] py-2 px-4 rounded transition duration-300 text-sm">Infos</a> --}}
+                            </div>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
         </section>

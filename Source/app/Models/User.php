@@ -17,11 +17,14 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
-    
     public function courses(){
-        return $this->hasMany(Course::class);
+        //returns created courses
+        return $this->hasMany(Course::class, 'teacher_id');
     }
-
+    
+    public function assignments(){
+        return $this->hasMany(Assignment::class);
+    }
     protected $fillable = [
         'name',
         'email',

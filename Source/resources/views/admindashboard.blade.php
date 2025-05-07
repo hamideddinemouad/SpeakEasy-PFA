@@ -24,7 +24,7 @@
     <!-- Main Content Area -->
     <section class="bg-white rounded-lg shadow-md p-6 md:col-span-3 space-y-8">
         <x-Errors />
-
+        <x-Success/>
         <!-- Manage Users Content -->
         <div id="users" class="content-section">
             <h2 class="text-2xl font-semibold text-[#002D62] mb-4">Gérer les Utilisateurs</h2>

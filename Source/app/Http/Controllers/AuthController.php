@@ -19,6 +19,7 @@ class AuthController extends Controller
         $newUser->email = $request->email;
         $newUser->password = Hash::make($request->password);
         $newUser->save();
+        return view('Login');
     }
 
     public function login(LoginRequest $request){

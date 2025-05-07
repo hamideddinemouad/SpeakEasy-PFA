@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\QuizController;
@@ -42,9 +43,11 @@ Route::get('/quizpage/failed', [QuizController::class, 'decreaseLevel'])->Middle
 
 Route::get('/quizpage/nextlevel', [QuizController::class, 'increaseLevel'])->Middleware('CheckLogin');
 
-Route::get('studentdashboard', function(){
-    return view('studentdashboard');
-})->Middleware('CheckLogin')->Middleware('CheckRole:student');
+// Route::get('studentdashboard', function(){
+//     return view('studentdashboard');
+// })->Middleware('CheckLogin')->Middleware('CheckRole:student');
+
+Route::get('/studentdashboard', [DashboardController::class, 'student'])->Middleware('CheckLogin')->Middleware('CheckRole:student')->name('studentdash');
 
 Route::get('/admindashboard', [DashboardController::class, 'admin'])->Middleware('CheckLogin')->Middleware('CheckRole:admin')->name('admindash');
 
@@ -66,6 +69,31 @@ Route::post('/delete/user/{id}', [UserController::class, 'delete'])->middleware(
 Route::post('/addStudents', [CourseController::class, 'addStudentsToCourse'])->middleware('CheckLogin')->middleware('CheckRole:admin');
 
 Route::post('/removeStudents', [CourseController::class, 'removeStudentsFromCourse'])->middleware('CheckLogin')->middleware('CheckRole:admin');
+
+Route::get('test',[AssignmentController::class, 'test']);
+
+Route::post('create/assignment', [AssignmentController::class, 'create']);
+
+Route::get('delete/assignment/{id}', [AssignmentController::class, 'delete']);
+
+Route::post('assign/{assignmentId}', [AssignmentController::class, 'assign']);
+
+Route::get('about', function(){
+    return view('aboutus');
+});
+
+Route::get('programs', function(){
+    return view('programs');
+});
+
+Route::get('teachers', function(){
+    return view('professors');
+});
+
+Route::post('delete/course/{id}', [CourseController::class, 'deleteCourse']);
+
+
+
 // Route::match(['get', 'post'], '/quizpage', [QuizController::class, 'start']);"
 // Route::get('quizpage', function(){
 //     return view('quizpage');

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('assignment_id')->references('id')->on('assignments');
         });
     }
-
+    
     /**
      * Reverse the migrations.
      */

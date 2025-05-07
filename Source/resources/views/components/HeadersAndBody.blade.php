@@ -10,5 +10,4 @@
     @yield('content')
 </body>
 
-<x-Footer />
 </html>
