@@ -1,1 +1,12 @@
-i was seeding them db's
+i was creating teacher dashboard
+i'm in this part
+
+          @foreach ($students as $student)
+          <label class="flex items-center space-x-3">
+            {{-- {{$student->id}} was in value --}}
+            <input type="checkbox" name="assigntoTheseStudents[]" value="" class="w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-2 focus:ring-blue-500 transition duration-150 ease-in-out">
+            <span class="text-gray-700">{{$student}}</span>
+          </label>
+
+          @endforeach
+trying to figure out a way to assign assignment to students

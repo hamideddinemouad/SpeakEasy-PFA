@@ -1,0 +1,101 @@
+**EdTech Platform Design Outline**
+
+---
+
+### **1. User Roles & Permissions**
+- **Admin**: Full control over users, classes, grades. Can ban/unban, assign roles, manage classes.
+- **Teacher**: Create/manage assignments, grade submissions, view class-specific data.
+- **Student**: Submit assignments, view grades, access class-specific homework.
+
+---
+
+### **2. Core Features**
+
+#### **Admin Dashboard**
+- **User Management**:
+  - View all users (email, role, status).
+  - Ban/unban users.
+  - Assign/remove roles (e.g., promote student to teacher).
+- **Class Management**:
+  - Create/delete classes.
+  - Assign teachers and students to classes.
+  - View classes with associated teachers/students.
+- **Data Overview**:
+  - View all assignments and grades.
+  - Export data (optional).
+
+#### **Teacher Dashboard**
+- **Assignment Creation**:
+  - Types: QCM (auto-graded), Written Task, Video/Link Submission.
+  - Fields: Title (unique), description, deadline, class selection.
+  - QCM Builder: Add questions, multiple-choice answers, mark correct ones.
+- **Submissions & Grading**:
+  - View submissions by class/assignment.
+  - Grade non-QCM tasks (text/links) with feedback.
+  - Auto-graded QCM results (system calculates scores).
+- **Gradebook**:
+  - Track student progress per class.
+  - Edit grades if needed.
+
+#### **Student Dashboard**
+- **Assignments**:
+  - View assignments by class (pending/submitted/graded).
+  - Submit responses: text, QCM answers, or links.
+- **Grades & Feedback**:
+  - "Mes Notes" section: historical grades, teacher feedback.
+  - Filter by class/assignment type.
+
+---
+
+### **3. Database Structure**
+- **Users**:
+  - `user_id`, `email`, `role` (admin/teacher/student), `banned` (bool), `classes` (array of class IDs).
+- **Classes**:
+  - `class_id`, `name`, `teacher_id`, `student_ids` (array).
+- **Assignments**:
+  - `assignment_id`, `title`, `description`, `type` (QCM/written/video), `class_id`, `due_date`, `teacher_id`.
+  - QCM-specific: `questions` (array with correct answers).
+- **Submissions**:
+  - `submission_id`, `assignment_id`, `student_id`, `response` (text/link/QCM answers), `grade`, `feedback`.
+
+---
+
+### **4. Workflow Examples**
+1. **Admin**:
+   - Creates a class "Math 101", assigns Teacher A and 30 students.
+   - Bans a user for misconduct.
+2. **Teacher**:
+   - Creates a QCM assignment for "Math 101" with 10 questions.
+   - Grades written submissions and adds feedback.
+3. **Student**:
+   - Submits QCM answers, receives instant grade.
+   - Uploads essay via text, later checks "Mes Notes" for feedback.
+
+---
+
+### **5. Security & Validation**
+- Role-based access control (e.g., students can’t create classes).
+- Teachers can only edit their own assignments.
+- Unique assignment titles per class.
+- QCM answers validated against predefined correct options.
+
+---
+
+### **6. UI/UX Considerations**
+- **Admin**: Tables with search/filter for users/classes.
+- **Teacher**: Clean forms for assignment creation, grading interface resembling a spreadsheet.
+- **Student**: To-do list for assignments, submission history with status badges.
+
+---
+
+### **7. Future Enhancements**
+- Notifications for deadlines/grades.
+- File upload support (PDF, images).
+- Dashboards with charts for performance trends.
+
+---
+
+This structure balances flexibility (multiple assignment types) with control (admin oversight). Start with MVP focusing on core features, then iterate based on feedback.
+
+
+assignement soumettre en attente de correction

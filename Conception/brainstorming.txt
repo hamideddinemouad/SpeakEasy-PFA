@@ -17,4 +17,6 @@ a student can then make a response via texte or do the qcm or send link;
 the assignement will be corrected by the professor who assigned it if it's not a qcm;
 student can see corrections of past examms in mes notes section;
 
-admin can see all uses
+admin can see all users and their email, can change roles
+can see all classes and their professors and all students
+see all marks
