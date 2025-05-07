@@ -7,7 +7,7 @@
 
 <x-Header />
 
-    <!-- Hero Section -->
+
     <section class="bg-[#002D62] text-[#F5F5F5] py-32">
         <div class="container mx-auto text-center px-4">
             <h1 class="text-5xl font-bold mb-6 leading-tight">Libérez Votre Potentiel Linguistique</h1>
@@ -18,7 +18,7 @@
         </div>
     </section>
 
-    <!-- Features Section -->
+ 
     <section class="py-16">
         <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 px-4">
             <div class="p-6">

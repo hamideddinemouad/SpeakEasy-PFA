@@ -6,7 +6,7 @@
 
 <x-Header />
 
-    <!-- Main Content -->
+
     <main class="container mx-auto py-16 px-4">
         <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-8 text-center">
             <h1 class="text-4xl font-bold text-[#E63946] mb-6">Accès Interdit</h1>
