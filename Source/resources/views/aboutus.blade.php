@@ -16,7 +16,7 @@
 </head>
 <body class="bg-[#F5F5F5] font-sans">
 
-    <!-- Header (Same as Homepage) -->
+
      <x-Header />
 
     <!-- Main Content -->
