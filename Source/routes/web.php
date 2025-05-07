@@ -39,7 +39,7 @@ Route::post('/quizpage/init', [QuizController::class, 'start'])->name('quiz.init
 
 Route::post('/quizpage/reply', [QuizController::class, 'continue'])->name('answer.reply')->Middleware('CheckLogin');
 
-Route::get('/quizpage/failed', [QuizController::class, 'decreaseLevel'])->Middleware('CheckLogin');
+Route::get('/quizpage/decreaselevel', [QuizController::class, 'decreaseLevel'])->Middleware('CheckLogin');
 
 Route::get('/quizpage/nextlevel', [QuizController::class, 'increaseLevel'])->Middleware('CheckLogin');
 

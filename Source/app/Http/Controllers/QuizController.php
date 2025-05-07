@@ -95,6 +95,11 @@ class QuizController extends Controller
 
     public function handleLevel(){
         // dd("handle triggered");
+        // so this handles if errorsSoFar is a certain level 
+        // or if success according to score 
+        // if score surpassed it returns a view saying you're gonna be tested into next level 
+        // but if level already C2 that's it the quiz stops
+        //and if fail at A1 no lower level
         if ($this->errorsSoFar >= 3){
             $this->errorsSoFar = 0;
             // dd("handle triggered and should lower");
@@ -141,9 +146,7 @@ class QuizController extends Controller
         $this->questions = Question::where('Level', $this->level)->where('language', ($this->language))->with('answers')->take('20')->get();
     }
 
-    public function continueQuizz(){
 
-    }
 
     public function continueNewLevel(){
         // dd($answer->answer);
