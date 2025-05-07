@@ -6,13 +6,7 @@
     <title>Nos Professeurs - SpeakEasy Academy</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {},
-        },
-      }
-    </script>
+
 </head>
 <body class="bg-[#F5F5F5] font-sans">
 
@@ -66,7 +60,7 @@
 
 
     <footer class="bg-[#001F3F] text-[#F5F5F5] py-6 text-center">
-        <p>&copy; 2024 SpeakEasy Academy</p>
+        <p>&copy; 2025 SpeakEasy Academy</p>
     </footer>
 
 </body>
