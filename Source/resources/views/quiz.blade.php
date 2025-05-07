@@ -3,7 +3,7 @@
 @section('content')
     <x-Header />
 
-    <!-- Main Content -->
+
     <main class="container mx-auto py-16 px-4">
         <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-8 text-center">
             <h1 class="text-3xl font-bold text-[#002D62] mb-6">Test de positionnement en anglais</h1>
@@ -16,7 +16,7 @@
                 Avant de commencer, veuillez sélectionner la langue dans laquelle vous souhaitez être testé(e), puis choisissez le niveau qui correspond à vos compétences :
             </p>
 
-            <!-- Level Selection Form -->
+
             <form action="{{route('quiz.init')}}" method="POST">
                 @csrf
                 <div class="mb-6 text-left">

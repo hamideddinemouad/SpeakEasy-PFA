@@ -6,7 +6,7 @@
 
 <x-Header />
 
-<!-- Main Content -->
+
 <main class="container mx-auto py-16 px-4">
     <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-8">
 
@@ -22,7 +22,7 @@
         @else
             <h2  class="text-md text-gray-500 italic mb-4">Previous Answer: Not set</h2>
         @endif --}}
-        <!-- Question Form -->
+
         <form action="{{route('answer.reply')}}" method="POST">
             @csrf
             <p class="text-lg font-semibold text-[#002D62] mb-4">
@@ -47,7 +47,7 @@
                 </label>
             </div>
 
-            <!-- Submit Button -->
+
             <div class="mt-6 text-center">
                 <button type="submit" class="bg-[#E63946] hover:bg-red-700 text-[#F5F5F5] py-3 px-6 rounded-full text-xl transition duration-300">
                     Soumettre
