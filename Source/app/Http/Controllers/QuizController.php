@@ -23,6 +23,28 @@ class QuizController extends Controller
     public $questionCount = 0;
     public $passedLevels = [];
 
+    public function start(QuizRequest $request){
+        // dd('start func');
+        $this->language = $request->language;
+        $this->level = $request->level;
+        $this->loadQuestions();
+        $this->saveProgress();
+        // $this->indexSoFar = 0;
+        // $this->errorsSoFar = 0;
+            // dd('session is null');
+        return view('quizpage')
+            ->with('question', $this->questions[$this->indexSoFar])
+            ->with('score', $this->score)
+            ->with('errorsSofar', $this->errorsSoFar)
+            ->with('questionCount', $this->questionCount)
+            ->with('level', $this->level);
+            // dd($question);
+  
+        // $this->loadPrevious();
+        // $this->questions = $this->loadQuestions();
+        // $question = $this->generateQuestion();
+        // return view('quizpage')->with('question', $question);
+    }
 
     public function continue(QuestionAnswer $answer){
         // dd($answer->answer);
@@ -87,28 +109,7 @@ class QuizController extends Controller
         }
         return "continue";
     }
-    public function start(QuizRequest $request){
-        // dd('start func');
-        $this->language = $request->language;
-        $this->level = $request->level;
-        $this->loadQuestions();
-        $this->saveProgress();
-        // $this->indexSoFar = 0;
-        // $this->errorsSoFar = 0;
-            // dd('session is null');
-        return view('quizpage')
-            ->with('question', $this->questions[$this->indexSoFar])
-            ->with('score', $this->score)
-            ->with('errorsSofar', $this->errorsSoFar)
-            ->with('questionCount', $this->questionCount)
-            ->with('level', $this->level);
-            // dd($question);
-  
-        // $this->loadPrevious();
-        // $this->questions = $this->loadQuestions();
-        // $question = $this->generateQuestion();
-        // return view('quizpage')->with('question', $question);
-    }
+
 
     public function loadPrevious(){
         $this->language = session('language');
@@ -137,16 +138,11 @@ class QuizController extends Controller
             'passedLevels' => $this->passedLevels]);
     }
     public function loadQuestions(){
-        // dd($this);
-        // dd(Question::where('Level', $this->level)->where('language', ($this->language))->with('answers')->take('20')->get());
-        // salam mohamed kidayr cava
         $this->questions = Question::where('Level', $this->level)->where('language', ($this->language))->with('answers')->take('20')->get();
-        // dd($this->questions);
     }
 
     public function continueQuizz(){
-        // dd(session()->all());
-        //bring questions and index so far
+
     }
 
     public function continueNewLevel(){
@@ -164,36 +160,7 @@ class QuizController extends Controller
     }
 
     public function decreaseLevel(){
-        // $was = session("level");
 
-        
-        // dd($this->passedLevels);
-        // echo session("level");
-        // if(session("level"))
-        // switch(session("level")){
-        //     case "A2":
-        //        $this->level = "A1";
-        //     //    dd(array_search($this->level, $this->passedLevels, true));
-        //     dd(array_search("tkachkich", $this->passedLevels, true));
-        //        break;
-        //     case "B1":
-        //         // session(["level" => "A2"]);
-        //         $this->level = "A2";
-        //         break;
-        //     case "B2":
-        //         $this->level = "B1";
-        //         // session(["level" => "B1"]);
-        //         break;
-        //     case "C1":
-        //         // session(["level" => "B2"]);
-        //         $this->level = "B2";
-        //         break;
-        //     case "C2":
-        //         // session(["level" => "C1"]);
-        //         $this->level = "C1";
-        //         break;
-        // }
-        // dd($was . "now it's" .session("level"));
         $this->passedLevels = session("passedLevels");
         $level = $this->descreaseQuizLevel();
         // dd($level);
