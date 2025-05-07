@@ -8,7 +8,7 @@
 
 
 <div id="myModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
-    <!-- Modal content -->
+
     <div class="bg-white p-6 rounded-2xl shadow-2xl w-full max-w-md">
       <div class="flex justify-between items-center mb-4">
         <h2 class="text-xl font-bold">Gérer</h2>
@@ -23,10 +23,9 @@
     </div>
   </div>
 
-    <!-- Main Content -->
+
     <main class="container mx-auto py-16 px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
 
-        <!-- Aside Navigation -->
         <aside class="bg-white rounded-lg shadow-md p-6 md:col-span-1">
             <h2 class="text-2xl font-semibold text-[#002D62] mb-4">Tableau de Bord Enseignant</h2>
             <ul class="space-y-2">
@@ -36,10 +35,9 @@
             </ul>
         </aside>
 
-        <!-- Main Content Area -->
         <section class="bg-white rounded-lg shadow-md p-6 md:col-span-3">
             <x-Success/>
-            <!-- Manage Courses Content -->
+       
             <x-Errors />
             <div id="courses" class="content-section">
                 <h2 class="text-2xl font-semibold text-[#002D62] mb-4">Gérer mes Cours</h2>
@@ -50,31 +48,18 @@
                                 <span class="text-xl font-medium text-gray-900 tracking-tight leading-snug">
                                     {{ $course->title }}
                                 </span>
-                                {{-- <a href="/admin/courses/{{$course->id}}/edit" class="bg-[#87CEEB] hover:bg-[#002D62] text-[#F5F5F5] py-2 px-4 rounded transition duration-300 text-sm">Infos</a> --}}
+                               
                             </div>
                         </li>
                     @endforeach
                 </ul>
                     
-                
-                    
-                    <!-- <li class="py-2 border-b border-gray-200 last:border-b-0">
-                        <div class="flex justify-between items-center">
-                            <span>Français Débutant (A1)</span>
-                            <a href="/teacher/courses/french101" class="text-[#002D62] hover:text-blue-700">Gérer</a>
-                        </div>
-                    </li>
-                    <li class="py-2 border-b border-gray-200 last:border-b-0">
-                         <div class="flex justify-between items-center">
-                            <span>Anglais Intermédiaire (B1)</span>
-                            <a href="/teacher/courses/english201" class="text-[#002D62] hover:text-blue-700">Gérer</a>
-                        </div>
-                    </li> -->
+            
                 </ul>
             </div>
 
         
-            <!-- Manage Assignments Coadentent -->
+
             <div id="assignments" class="content-section hidden">
                 <button id="modalTrigger" data-modal-id="CreateAssignmentModal" type="button" class="mt-4 mx-auto block bg-[#87CEEB] hover:bg-[#002D62] text-[#F5F5F5] py-2 px-4 rounded transition duration-300 cursor-pointer bg-blue-600">
                     Creer un devoir
@@ -91,7 +76,7 @@
                                 <span class="text-xl font-medium text-gray-900 tracking-tight leading-snug">
                                     {{ $assignment->title }}
                                 </span>
-                                <div class="flex gap-2"> <!-- Added container with gap -->
+                                <div class="flex gap-2"> 
                                     <button id="modalTrigger" 
                                             data-modal-id="{{$assignment->title}}"
                                             class="bg-blue-600 hover:bg-[#002D62] text-[#F5F5F5] py-2 px-4 rounded transition duration-300 text-sm">
@@ -109,7 +94,7 @@
                 </ul>
             </div>
 
-            <!-- Manage Students Content -->
+
             <div id="students" class="content-section hidden">
                 <h2 class="text-2xl font-semibold text-[#002D62] mb-4">Voir mes Étudiants</h2>
                 <ul class="bg-white max-w-xl mx-auto rounded-xl shadow-lg overflow-hidden divide-y divide-gray-200">
@@ -119,7 +104,7 @@
                                 <span class="text-xl font-medium text-gray-900 tracking-tight leading-snug">
                                     {{$student}}
                                 </span>
-                                {{-- <a href="/admin/courses/{{}}/edit" class="bg-[#87CEEB] hover:bg-[#002D62] text-[#F5F5F5] py-2 px-4 rounded transition duration-300 text-sm">Infos</a> --}}
+                               
                             </div>
                         </li>
                     @endforeach
