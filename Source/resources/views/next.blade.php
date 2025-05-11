@@ -44,5 +44,5 @@
     </div>
 </main>
     @endif
-    <x-Footer />
+  
 @endsection
