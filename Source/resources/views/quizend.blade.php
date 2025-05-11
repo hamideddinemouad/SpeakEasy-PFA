@@ -19,7 +19,7 @@
 
         <div class="flex justify-center">
             <a href="/" class="bg-[#002D62] hover:bg-navy-blue text-[#F5F5F5] py-3 px-6 rounded-full text-xl transition duration-300">
-                Acceuil
+             Accueil
             </a>
         </div>
         </div>
