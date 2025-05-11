@@ -167,17 +167,15 @@ class QuizController extends Controller
         $this->passedLevels = session("passedLevels");
         array_push($this->passedLevels, session("level"));
         $level = $this->descreaseQuizLevel();
-        // dump("decreaseLevel() func ");
+
 
         if($level === "Pre-A1" || array_search($level, $this->passedLevels, true) !== false ){
-            // dd("level in array");
-            // dump("triggered");
-            // dd($level);
+
             return view("quizend")->with("level", $this->level)->with("endquiz", 1);
         }
-        // dd($level);
+
         $this->language = session('language');
-        // $this->level = session('level');
+     
         $this->loadQuestions();
         $this->indexSoFar = 0;
         $this->increaseLevel = false;
@@ -190,29 +188,29 @@ class QuizController extends Controller
 
 
     public function descreaseQuizLevel(){
-        // dd(session("level"));
+
 
         switch(session("level")){
             case "A1":
                 return $this->level = "Pre-A1";
             case "A2":
                $this->level = "A1";
-            //    dd(array_search($this->level, $this->passedLevels, true));
+           
                return $this->level;
             case "B1":
-                // session(["level" => "A2"]);
+               
                 $this->level = "A2";
                 return $this->level;
             case "B2":
                 $this->level = "B1";
-                // session(["level" => "B1"]);
+               
                 return $this->level;
             case "C1":
-                // session(["level" => "B2"]);
+                
                 $this->level = "B2";
                 return $this->level;
             case "C2":
-                // session(["level" => "C1"]);
+                
                 $this->level = "C1";
                 return $this->level;
                 break;
