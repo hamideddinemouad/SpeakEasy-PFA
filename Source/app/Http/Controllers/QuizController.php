@@ -165,6 +165,7 @@ class QuizController extends Controller
     public function decreaseLevel(){
 
         $this->passedLevels = session("passedLevels");
+        array_push($this->passedLevels, session("level"));
         $level = $this->descreaseQuizLevel();
         // dump("decreaseLevel() func ");
         // dd($level);
@@ -195,7 +196,7 @@ class QuizController extends Controller
 
     public function descreaseQuizLevel(){
         // dd(session("level"));
-        array_push($this->passedLevels, session("level"));
+
         switch(session("level")){
             case "A1":
                 return $this->level = "Pre-A1";
@@ -226,12 +227,6 @@ class QuizController extends Controller
     public function increaseLevel(){
         // array_push($this->passedLevels, $this->level);
         $level = session("level");
-        dump("increaselevel() func");
-        dump($level);
-        dump($this->passedLevels);
-        array_push($this->passedLevels, $level);
-        dd($this->passedLevels);
-        
         // dd("here");
 
         switch(session("level")){
