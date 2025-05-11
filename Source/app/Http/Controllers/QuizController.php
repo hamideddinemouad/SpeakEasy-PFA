@@ -166,7 +166,7 @@ class QuizController extends Controller
 
         $this->passedLevels = session("passedLevels");
         $level = $this->descreaseQuizLevel();
-   
+        // dump("decreaseLevel() func ");
         // dd($level);
         // dd($this->passedLevels);
         // dd(array_search($level, $this->passedLevels, true));
@@ -192,33 +192,10 @@ class QuizController extends Controller
         return $this->continueNewLevel();
     } 
 
-    public function hasQuizEnded(){
-        switch(session("level")){
-            case "A2":
-               $this->level = "A1";
-            //    dd(array_search($this->level, $this->passedLevels, true));
-               return $this->level;
-            case "B1":
-                // session(["level" => "A2"]);
-                $this->level = "A2";
-                return $this->level;
-            case "B2":
-                $this->level = "B1";
-                // session(["level" => "B1"]);
-                return $this->level;
-            case "C1":
-                // session(["level" => "B2"]);
-                $this->level = "B2";
-                return $this->level;
-            case "C2":
-                // session(["level" => "C1"]);
-                $this->level = "C1";
-                return $this->level;
-                break;
-        }
-    }
+
     public function descreaseQuizLevel(){
         // dd(session("level"));
+        array_push($this->passedLevels, session("level"));
         switch(session("level")){
             case "A1":
                 return $this->level = "Pre-A1";
@@ -249,6 +226,7 @@ class QuizController extends Controller
     public function increaseLevel(){
         // array_push($this->passedLevels, $this->level);
         $level = session("level");
+        dump("increaselevel() func");
         dump($level);
         dump($this->passedLevels);
         array_push($this->passedLevels, $level);
