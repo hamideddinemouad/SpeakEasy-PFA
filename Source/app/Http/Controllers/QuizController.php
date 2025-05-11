@@ -169,7 +169,8 @@ class QuizController extends Controller
         // dd($level);
         // dd($this->passedLevels);
         // dd(array_search($level, $this->passedLevels, true));
-        if(array_search($level, $this->passedLevels, true) !== false){
+        // array_search($level,)
+        if($level === "Pre-A1" || array_search($level, $this->passedLevels, true) === true ){
             // dd("level in array");
             return view("next")->with("level", $this->level)->with("endquiz", 1);
         }
@@ -212,6 +213,8 @@ class QuizController extends Controller
     }
     public function descreaseQuizLevel(){
         switch(session("level")){
+            case "A1":
+                $this->level = "Pre-A1"
             case "A2":
                $this->level = "A1";
             //    dd(array_search($this->level, $this->passedLevels, true));
