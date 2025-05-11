@@ -43,6 +43,10 @@ Route::get('/quizpage/decreaselevel', [QuizController::class, 'decreaseLevel'])-
 
 Route::get('/quizpage/nextlevel', [QuizController::class, 'increaseLevel'])->Middleware('CheckLogin');
 
+// route::get('/quizend', function(){
+//     return view(quizend)
+// })
+
 // Route::get('studentdashboard', function(){
 //     return view('studentdashboard');
 // })->Middleware('CheckLogin')->Middleware('CheckRole:student');

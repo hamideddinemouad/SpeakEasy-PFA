@@ -100,13 +100,13 @@ class QuizController extends Controller
         // if score surpassed it returns a view saying you're gonna be tested into next level 
         // but if level already C2 that's it the quiz stops
         //and if fail at A1 no lower level
-        if ($this->errorsSoFar >= 5){
+        if ($this->errorsSoFar >= 1){
             $this->errorsSoFar = 0;
             // dd("handle triggered and should lower");
             return view("failed")->with("level", $this->level);
             
         }
-        if ($this->score === 13){
+        if ($this->score === 2){
             $this->errorsSoFar = 0;
             // dd("handle triggered and should increase");
         
@@ -166,14 +166,20 @@ class QuizController extends Controller
 
         $this->passedLevels = session("passedLevels");
         $level = $this->descreaseQuizLevel();
+   
         // dd($level);
         // dd($this->passedLevels);
         // dd(array_search($level, $this->passedLevels, true));
         // array_search($level,)
-        if($level === "Pre-A1" || array_search($level, $this->passedLevels, true) === true ){
+        // dump($this->passedLevels);
+        // dd($level);
+        if($level === "Pre-A1" || array_search($level, $this->passedLevels, true) !== false ){
             // dd("level in array");
+            // dump("triggered");
+            // dd($level);
             return view("quizend")->with("level", $this->level)->with("endquiz", 1);
         }
+        // dd($level);
         $this->language = session('language');
         // $this->level = session('level');
         $this->loadQuestions();
@@ -212,9 +218,10 @@ class QuizController extends Controller
         }
     }
     public function descreaseQuizLevel(){
+        // dd(session("level"));
         switch(session("level")){
             case "A1":
-                $this->level = "Pre-A1"
+                return $this->level = "Pre-A1";
             case "A2":
                $this->level = "A1";
             //    dd(array_search($this->level, $this->passedLevels, true));
@@ -241,8 +248,14 @@ class QuizController extends Controller
     
     public function increaseLevel(){
         // array_push($this->passedLevels, $this->level);
-        array_push($this->passedLevels, session("level"));
+        $level = session("level");
+        dump($level);
+        dump($this->passedLevels);
+        array_push($this->passedLevels, $level);
+        dd($this->passedLevels);
+        
         // dd("here");
+
         switch(session("level")){
             case "C1":
                $this->level = "C2";
@@ -264,7 +277,12 @@ class QuizController extends Controller
                 $this->level = "A2";
                 break;
         }
-
+        if(array_search($this->level, $this->passedLevels, true) !== false ){
+            // dd("level in array");
+            dump("triggered");
+            // dd($level);
+            return view("quizend")->with("level", $level)->with("endquiz", 1);
+        }
         $this->language = session('language');
         $this->loadQuestions();
         $this->indexSoFar = 0;
