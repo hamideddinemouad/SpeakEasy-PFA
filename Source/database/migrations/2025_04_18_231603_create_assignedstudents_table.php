@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('assignedstudents', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('student_id')->references('id')->on('users');
-            $table->foreignId('assignment_id')->references('id')->on('assignments');
+            $table->foreignId('student_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('assignment_id')->references('id')->on('assignments')->onDelete('cascade');
         });
     }
     

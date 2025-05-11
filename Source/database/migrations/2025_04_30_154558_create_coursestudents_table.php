@@ -14,10 +14,12 @@ return new class extends Migration
         Schema::create('coursestudents', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('student_id')->references('id')->on('users');
-            $table->foreignId('course_id')->references('id')->on('courses');
-
-            
+            $table->foreignId('student_id')
+            ->references('id')->on('users')
+            ->onDelete('cascade');
+            $table->foreignId('course_id')
+            ->references('id')->on('courses')
+            ->onDelete('cascade');
         });
     }
 
