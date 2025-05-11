@@ -43,13 +43,7 @@ Route::get('/quizpage/decreaselevel', [QuizController::class, 'decreaseLevel'])-
 
 Route::get('/quizpage/nextlevel', [QuizController::class, 'increaseLevel'])->Middleware('CheckLogin');
 
-// route::get('/quizend', function(){
-//     return view(quizend)
-// })
 
-// Route::get('studentdashboard', function(){
-//     return view('studentdashboard');
-// })->Middleware('CheckLogin')->Middleware('CheckRole:student');
 
 Route::get('/studentdashboard', [DashboardController::class, 'student'])->Middleware('CheckLogin')->Middleware('CheckRole:student')->name('studentdash');
 
@@ -98,11 +92,3 @@ Route::post('delete/course/{id}', [CourseController::class, 'deleteCourse']);
 
 
 
-// Route::match(['get', 'post'], '/quizpage', [QuizController::class, 'start']);"
-// Route::get('quizpage', function(){
-//     return view('quizpage');
-// })->Middleware('CheckLogin');
-
-
-
-// Route::post('quizpage/inprogress', [QuizController::class, 'continue'])->Middleware('CheckLogin');
