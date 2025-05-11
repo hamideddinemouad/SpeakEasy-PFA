@@ -24,31 +24,24 @@ class QuizController extends Controller
     public $passedLevels = [];
 
     public function start(QuizRequest $request){
-        // dd('start func');
+
         $this->language = $request->language;
         $this->level = $request->level;
         $this->loadQuestions();
         $this->saveProgress();
-        // $this->indexSoFar = 0;
-        // $this->errorsSoFar = 0;
-            // dd('session is null');
+
         return view('quizpage')
             ->with('question', $this->questions[$this->indexSoFar])
             ->with('score', $this->score)
             ->with('errorsSofar', $this->errorsSoFar)
             ->with('questionCount', $this->questionCount)
             ->with('level', $this->level);
-            // dd($question);
-  
-        // $this->loadPrevious();
-        // $this->questions = $this->loadQuestions();
-        // $question = $this->generateQuestion();
-        // return view('quizpage')->with('question', $question);
+       
+
     }
 
     public function continue(QuestionAnswer $answer){
-        // dd($answer->answer);
-        //correct
+
         if($answer->answer === "1"){
             $this->loadPrevious();
             $this->indexSoFar++;
@@ -66,7 +59,7 @@ class QuizController extends Controller
             ->with('questionCount', $this->questionCount)
             ->with('level', $this->level);
         }
-        //incorrect
+   
         $this->loadPrevious();
         $this->indexSoFar++;
         $this->questionCount++;
@@ -75,8 +68,7 @@ class QuizController extends Controller
 
         $this->saveProgress();
         if ($progress != "continue"){
-            // dd("should return page next or prev");
-            // dd($progress);
+
             return $progress;
           
         }
