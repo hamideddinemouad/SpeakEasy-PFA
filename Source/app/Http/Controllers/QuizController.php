@@ -168,12 +168,7 @@ class QuizController extends Controller
         array_push($this->passedLevels, session("level"));
         $level = $this->descreaseQuizLevel();
         // dump("decreaseLevel() func ");
-        // dd($level);
-        // dd($this->passedLevels);
-        // dd(array_search($level, $this->passedLevels, true));
-        // array_search($level,)
-        // dump($this->passedLevels);
-        // dd($level);
+
         if($level === "Pre-A1" || array_search($level, $this->passedLevels, true) !== false ){
             // dd("level in array");
             // dump("triggered");
@@ -225,11 +220,10 @@ class QuizController extends Controller
     }
     
     public function increaseLevel(){
-        // array_push($this->passedLevels, $this->level);
+      
         $level = session("level");
         $this->passedLevels = session("passedLevels");
-        // dd("here");
-        // dd($this->passedLevels);
+
         switch(session("level")){
             case "C1":
                $this->level = "C2";
@@ -267,8 +261,5 @@ class QuizController extends Controller
         $this->questionCount = 0;
         return $this->continueNewLevel();
     }
-    // public function generateNextQuestion(){
-    //     // dd($this->questions);
-    //     return view('quizpage')->with('question', $this->questions[$this->indexSoFar]);
-    // }
+
 }
