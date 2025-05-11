@@ -100,13 +100,13 @@ class QuizController extends Controller
         // if score surpassed it returns a view saying you're gonna be tested into next level 
         // but if level already C2 that's it the quiz stops
         //and if fail at A1 no lower level
-        if ($this->errorsSoFar >= 3){
+        if ($this->errorsSoFar >= 5){
             $this->errorsSoFar = 0;
             // dd("handle triggered and should lower");
             return view("failed")->with("level", $this->level);
             
         }
-        if ($this->score === 1){
+        if ($this->score === 13){
             $this->errorsSoFar = 0;
             // dd("handle triggered and should increase");
         

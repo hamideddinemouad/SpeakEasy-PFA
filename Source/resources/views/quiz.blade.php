@@ -6,10 +6,10 @@
 
     <main class="container mx-auto py-16 px-4">
         <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-8 text-center">
-            <h1 class="text-3xl font-bold text-[#002D62] mb-6">Test de positionnement en anglais</h1>
+            <h1 class="text-3xl font-bold text-[#002D62] mb-6">Test de positionnement de langue</h1>
 
             <p class="text-lg text-gray-700 opacity-75 mb-4">
-                Bienvenue au test de positionnement d'anglais de SpeakEasy Academy ! Ce test gratuit vous aidera à évaluer votre niveau d'anglais et à déterminer le cours qui vous convient le mieux.
+                Bienvenue au test de positionnement langue! Ce test gratuit vous aidera à évaluer votre niveau déterminer le cours qui vous convient le mieux.
             </p>
 
             <p class="text-lg text-gray-700 opacity-75 mb-6">
