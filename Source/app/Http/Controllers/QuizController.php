@@ -227,8 +227,9 @@ class QuizController extends Controller
     public function increaseLevel(){
         // array_push($this->passedLevels, $this->level);
         $level = session("level");
+        $this->passedLevels = session("passedLevels");
         // dd("here");
-
+        // dd($this->passedLevels);
         switch(session("level")){
             case "C1":
                $this->level = "C2";
