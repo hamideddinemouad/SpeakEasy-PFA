@@ -172,7 +172,7 @@ class QuizController extends Controller
         // array_search($level,)
         if($level === "Pre-A1" || array_search($level, $this->passedLevels, true) === true ){
             // dd("level in array");
-            return view("next")->with("level", $this->level)->with("endquiz", 1);
+            return view("quizend")->with("level", $this->level)->with("endquiz", 1);
         }
         $this->language = session('language');
         // $this->level = session('level');
