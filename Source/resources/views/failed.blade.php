@@ -9,7 +9,7 @@
 
     <main class="container mx-auto py-16 px-4">
         <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-8 text-center">
-        <h1 class="text-3xl font-bold text-green-500 mb-6">dommage !</h1>
+        <h1 class="text-3xl font-bold text-red-500 mb-6">dommage !</h1>
 
         <p class="text-lg text-gray-700 opacity-75 mb-4">
             Vous avez echoué le test <span class="inline-block bg-red-100 text-red-700 font-semibold px-3 py-1 rounded-full shadow-sm">{{$level}}</span> nous allons proceder a un niveau plus bas
