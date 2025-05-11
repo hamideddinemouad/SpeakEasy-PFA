@@ -57,6 +57,5 @@
     </div>
 </main>
 
-<x-Footer />
 
 @endsection
