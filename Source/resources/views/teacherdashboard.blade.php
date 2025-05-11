@@ -114,7 +114,7 @@
 
     </main>
 
-    <x-Footer />
+   
     <script>
     function addHiddenIfNotThere(element){
         if (!element.classList.contains("hidden")){
