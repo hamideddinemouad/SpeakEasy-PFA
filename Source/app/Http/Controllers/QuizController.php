@@ -87,28 +87,20 @@ class QuizController extends Controller
         ->with('questionCount', $this->questionCount)
         ->with('level', $this->level)
         ->with('prev', 'previous question incorrect');
-        // return view("failed");
-        // $this->questions = $this->loadQuestions();
-        // $question = $this->generateQuestion();
-        // return view('quizpage')->with('question', $question);
+
     }
 
     public function handleLevel(){
-        // dd("handle triggered");
-        // so this handles if errorsSoFar is a certain level 
-        // or if success according to score 
-        // if score surpassed it returns a view saying you're gonna be tested into next level 
-        // but if level already C2 that's it the quiz stops
-        //and if fail at A1 no lower level
+
         if ($this->errorsSoFar >= 1){
             $this->errorsSoFar = 0;
-            // dd("handle triggered and should lower");
+          
             return view("failed")->with("level", $this->level);
             
         }
         if ($this->score === 2){
             $this->errorsSoFar = 0;
-            // dd("handle triggered and should increase");
+
         
             return view("next")->with("level", $this->level)->with("endquiz", 0);
         }
@@ -149,11 +141,10 @@ class QuizController extends Controller
 
 
     public function continueNewLevel(){
-        // dd($answer->answer);
-        //correct
+
         $this->indexSoFar++;
         $this->saveProgress();
-        // dd("continueWithoutAnswerRequest ran");
+    
         return view('quizpage')
             ->with('question', $this->questions[$this->indexSoFar])
             ->with('score', $this->score)
@@ -227,26 +218,26 @@ class QuizController extends Controller
                $this->level = "C2";
                 break;
             case "B2":
-                // session(["level" => "A2"]);
+
                 $this->level = "C1";
                 break;
             case "B1":
                 $this->level = "B2";
-                // session(["level" => "B1"]);
+               
                 break;
             case "A2":
-                // session(["level" => "B2"]);
+
                 $this->level = "B1";
                 break;
             case "A1":
-                // session(["level" => "C1"]);
+              
                 $this->level = "A2";
                 break;
         }
         if(array_search($this->level, $this->passedLevels, true) !== false ){
-            // dd("level in array");
+           
             dump("triggered");
-            // dd($level);
+          
             return view("quizend")->with("level", $level)->with("endquiz", 1);
         }
         $this->language = session('language');
