@@ -101,7 +101,7 @@
 </main>
 
 
-<x-Footer />
+
 
 <script>
 // tabs management
