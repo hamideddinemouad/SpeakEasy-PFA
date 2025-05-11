@@ -58,7 +58,6 @@
 
     </main>
 
-    <x-Footer />
 
     <script>
         // links = document.querySelectorAll('.content-section');
