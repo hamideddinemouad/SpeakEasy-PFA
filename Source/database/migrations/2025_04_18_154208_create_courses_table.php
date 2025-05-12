@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('teacher_id')->references('id')->on('users');
+            $table->foreignId('teacher_id')->references('id')->on('users')->onDelete('cascade');
             $table->text('description');
             $table->string('title');
             //i need a table speciying teachers i think
